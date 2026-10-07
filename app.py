@@ -4,7 +4,8 @@ import numpy as np
 import skops.io as sio
 
 # Model aur columns load karo
-model = sio.load('car_price_model.skops', trusted=True)
+untrusted_types = sio.get_untrusted_types(file='car_price_model.skops')
+model = sio.load('car_price_model.skops', trusted=untrusted_types)
 import joblib
 model_columns = joblib.load('model_columns.pkl')
 
